@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block meta %}
+{% endblock meta %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock title %}        
+
+
+{% block css %}
+    <link rel="stylesheet" href= {% static "css/root/home.css" %}>
+{% endblock css %}
+
+
+{% block content %}
+    <div class='bg-text'>
+        <div class="row">
+            <h1 class= "brand-title" style="font-family: 'Pacifico', cursive; font-weight:400; font-style:normal; font-size: 7vw; ">DartBooster</h1>
+            {% for msg in messages %}
+                <div class="mt-1">{{ msg }}</div>
+            {% endfor %}
+        </div>
+        
+        <div class="row mt-5">
+            <div class="container">
+                
+                {% if not request.user.is_authenticated %}
+                    {% block user_form %}
+                    {% endblock user_form %}
+                {% else %}
+                    <a roll='button' class="btn btn-light btn-outline-dark btn-lg mt-4 rounded-pill px-5 py-2" href="{% url 'dashboard:main' %}">Go to Dashboard</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% block script %}
+    <script src={% static "js/root/home.js" %}></script>
+{% endblock script %}
+
+

@@ -1,0 +1,27 @@
+{% extends 'root/home.html' %}
+{% load static %}
+{% block user_form %}
+    {% block user_form_css %}
+        <link rel="stylesheet" href= {% static "css/user/user_form.css" %}>
+    {% endblock user_form_css %}
+    
+    <form id='user-form' class="user-form" method='post'>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="{% if field.errors|length > 0 %}has-error{%endif %}">
+                <input class="form-control rounded-pill text-center mt-2" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" id="{{ field.id_for_lable }}" placeholder="{{ field.label }}">
+                {% if field.name == "api_key" %}
+                    <label class="control-label" for="{{ field.id_for_label }}">Dart API 키는 <a href="https://opendart.fss.or.kr/uss/umt/EgovMberInsertView.do">여기서</a> 신청할 수 있습니다. </label>
+                {% endif %}
+                {% if field.name == "password1" %}
+                    <label class="control-label" for="{{ field.id_for_label }}">비밀번호는 최소 8자 이상이어야 합니다.</label>
+                    <label class="control-label" for="{{ field.id_for_label }}">숫자로만 이루어진 비밀번호는 사용할 수 없습니다.</label>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p class="m-0"><label class="control-label" for="{{ field.id_for_label }}" style="color:tomato;">{{ error }}</label></p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-primary form-control rounded-pill mt-4" value="{{ button_text }}">
+    </form>
+{% endblock user_form %}

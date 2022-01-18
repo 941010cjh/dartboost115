@@ -1,0 +1,21 @@
+/* 
+    master.css 
+*/
+
+html,
+body{ 
+    margin:0; 
+    padding:0; 
+    height:100%; 
+    width:100%; 
+}
+
+.feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+}
+
+.row {
+    --bs-gutter-x: 0;
+}

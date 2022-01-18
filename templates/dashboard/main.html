@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block meta %}
+{% endblock meta %}
+
+{% block sidebar %}
+{% endblock sidebar %}
+
+
+{% block title %}
+    <title>Dashboard</title>
+{% endblock title %}        
+
+
+{% block css %}
+    <link rel="stylesheet" href= {% static "css/dashboard/main.css" %}>
+{% endblock css %}
+
+
+{% block content %}
+    <div class='bg-text'>
+        <div class="row">
+            <h1 class= "brand-title" style="font-family: 'Pacifico', cursive; font-weight:400; font-style:normal; font-size: 7vw; "><strong>DartBooster</strong></h1>
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% block script %}
+    <script src={% static "js/dashboard/main.js" %}></script>
+{% endblock script %}
+
+
